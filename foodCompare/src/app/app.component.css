@@ -1,0 +1,8 @@
+.grid div{
+    text-align: center;
+    margin: auto;
+}
+
+#cabecera th{
+    margin: 20px;
+}
