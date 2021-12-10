@@ -1,3 +1,6 @@
+body{
+    background-color:white;
+}
 .grid div{
     text-align: center;
     margin: auto;
@@ -6,3 +9,12 @@
 #cabecera th{
     margin: 20px;
 }
+#titulo{
+    background-color: antiquewhite;
+    text-align: center;
+    color: black;
+    text-shadow: 2px 2px 2px #B8FF33;
+    
+}
+
+

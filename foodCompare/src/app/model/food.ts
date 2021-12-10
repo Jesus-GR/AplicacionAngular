@@ -1,13 +1,13 @@
 export interface Food {
     id?: number
     nombre?: string
-    energia?: number
-    grasas?: number
-    carbohidratos?: number
-    azucar?: number
+    energia: number
+    grasas: number
+    carbohidratos: number
+    azucar: number
     fibra?: number
-    proteina?: number
+    proteina: number
     sal?: number
-    colesterol?: number
+    colesterol: number
     imagen?:string
 }

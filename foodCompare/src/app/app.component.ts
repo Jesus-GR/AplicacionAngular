@@ -16,8 +16,23 @@ selectedFoods1:Food[]=[]
 foods2:Food[]=[]
 selectedFoods2:Food[] = []
 
-selectedGraphicFood1:Food = {}
-selectedGraphicFood2:Food = {}
+selectedGraphicFood1:Food = {
+  energia:-1,
+  grasas:-1,
+  carbohidratos:-1,
+  azucar:-1,
+  proteina:-1,
+  colesterol:-1
+
+}
+selectedGraphicFood2:Food = {
+  energia:-1,
+  grasas:-1,
+  carbohidratos:-1,
+  azucar:-1,
+  proteina:-1,
+  colesterol:-1
+}
 
 
  nombre1:string = ''
@@ -31,7 +46,8 @@ seDespliega2:boolean = false
    basicOptions:any
 
 
-  constructor(private foodService:FoodService){}
+  constructor(private foodService:FoodService){
+  }
 
   
   ngOnInit(): void {
@@ -63,7 +79,7 @@ seDespliega2:boolean = false
       datasets:[
         {
          label: 'Tabla de valores',
-         backgroundColor: '#42A5F5',
+         backgroundColor: '#FF5733',
            data:[this.selectedGraphicFood1.energia,this.selectedGraphicFood1.grasas,this.selectedGraphicFood1.carbohidratos,this.selectedGraphicFood1.azucar,this.selectedGraphicFood1.proteina,this.selectedGraphicFood1.sal,this.selectedGraphicFood1.colesterol]
         }
       ]
@@ -74,12 +90,13 @@ seDespliega2:boolean = false
   eligeselectedFoods2(nombre:string){
     this.selectedFoods2 = this.foods2.filter(data => data.nombre == nombre)
     this.selectedGraphicFood2 = this.selectedFoods2[0]
+    
     this.basicData2={
       labels:['Calorías','Grasas','Carbohidratos','Azucares','Proteina','Sal','Colesterol'],
       datasets:[
         {
          label: 'Tabla de valores',
-         backgroundColor: '#42A5F5',
+         backgroundColor: '#B8FF33',
            data:[this.selectedGraphicFood2.energia,this.selectedGraphicFood2.grasas,this.selectedGraphicFood2.carbohidratos,this.selectedGraphicFood2.azucar,this.selectedGraphicFood2.proteina,this.selectedGraphicFood2.sal,this.selectedGraphicFood2.colesterol]
         }
       ]

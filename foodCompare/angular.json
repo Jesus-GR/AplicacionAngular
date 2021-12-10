@@ -33,7 +33,7 @@
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
-              "../node_modules/chart.js/dist/Chart.js"
+             
             ]
           },
           "configurations": {

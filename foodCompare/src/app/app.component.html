@@ -1,86 +1,257 @@
-<div class="grid">
-  <div class="col-6">
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" pInputText [(ngModel)]="nombre1" placeholder="Search" (change)="eligeselectedFoods1(nombre1)">
-    </span>
-    <p-table [value]="selectedFoods1" responsiveLayout="scroll">
-      <ng-template pTemplate="header">
-        <tr>
-        <tr>
-          <th>Imagen</th>
-          <th>Nombre</th>
-          <th>Energía</th>
-          <th>Grasas</th>
-          <th>Carbohidratos</th>
-          <th>Azucar</th>
-          <th>Proteina</th>
+<body>
 
-          <th>Colesterol</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
-        <tr>
-          <td><img [src]="product.imagen" alt="" style="width: 100px;"></td>
-          <td>{{product.nombre}}</td>
-          <td>{{product.energia}}</td>
-          <td>{{product.grasas}}</td>
-          <td>{{product.carbohidratos}}</td>
-          <td>{{product.azucar}}</td>
-          <td>{{product.proteina}}</td>
+  <h1 id="titulo">COMPARADOR NUTRICIONAL</h1>
+  <div class="grid">
+    <div class="col-5">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="nombre1" placeholder="Search"
+          (change)="eligeselectedFoods1(nombre1)">
+      </span>
+      <p-table [value]="selectedFoods1" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Energía</th>
+            <th>Grasas</th>
+            <th>Carbohidratos</th>
+            <th>Azucar</th>
+            <th>Proteina</th>
 
-          <td>{{product.colesterol}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-    <div class="card">
-      <p-chart type="bar" [data]="basicData1" [options]="basicOptions"></p-chart>
+            <th>Colesterol</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td><img [src]="product.imagen" alt="" style="width:150px; height: 100px;"></td>
+            <td>{{product.nombre}}</td>
+            <td>{{product.energia}}</td>
+            <td>{{product.grasas}}</td>
+            <td>{{product.carbohidratos}}</td>
+            <td>{{product.azucar}}</td>
+            <td>{{product.proteina}}</td>
+
+            <td>{{product.colesterol}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <div class="card" style="background-color: antiquewhite;">
+        <p-chart type="bar" [data]="basicData1" [options]="basicOptions"></p-chart>
+      </div>
+    </div>
+
+    <!------------------------------------------------------------------------------------------------------------------->
+    <div class="col-5">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input type="text" pInputText [(ngModel)]="nombre2" placeholder="Search"
+          (change)="eligeselectedFoods2(nombre2)">
+      </span>
+      <p-table [value]="selectedFoods2" responsiveLayout="scroll">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Energía</th>
+            <th>Grasas</th>
+            <th>Carbohidratos</th>
+            <th>Azucar</th>
+            <th>Proteina</th>
+            <th>Colesterol</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td><img [src]="product.imagen" alt="" style="width: 150px; height: 100px;"></td>
+            <td>{{product.nombre}}</td>
+            <td>{{product.energia}}</td>
+            <td>{{product.grasas}}</td>
+            <td>{{product.carbohidratos}}</td>
+            <td>{{product.azucar}}</td>
+            <td>{{product.proteina}}</td>
+            <td>{{product.colesterol}}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+      <div class="card" style="background-color: antiquewhite;">
+        <p-chart type="bar" [data]="basicData2" [options]="basicOptions"></p-chart>
+      </div>
     </div>
   </div>
+<!--------------------------------------------------------------------------------------------------------------------------------->
+  <div class="grid" style="margin-top:30px ;">
+    <div class="col-4"></div>
+    <div class="col-4" *ngIf="selectedGraphicFood1.energia != -1 && selectedGraphicFood2.energia != -1">
+  <p-table [value]="selectedFoods2" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th></th>
+        <th><img [src]="selectedGraphicFood1.imagen" alt="" style="width: 150px; height: 100px;"></th>
+        <th><img [src]="selectedGraphicFood2.imagen" alt="" style="width: 150px; height: 100px;"></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Energia</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.energia > selectedGraphicFood2.energia">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.energia < selectedGraphicFood2.energia">
+            <i class="pi pi-times"  style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.energia == selectedGraphicFood2.energia">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
 
-
-
-
-
-
-  <div class="col-6">
-    <span class="p-input-icon-left">
-      <i class="pi pi-search"></i>
-      <input type="text" pInputText [(ngModel)]="nombre2" placeholder="Search" (change)="eligeselectedFoods2(nombre2)">
-    </span>
-    <p-table [value]="selectedFoods2" responsiveLayout="scroll">
-      <ng-template pTemplate="header">
-        <tr>
-        <tr>
-          <th>Imagen</th>
-          <th>Nombre</th>
-          <th>Energía</th>
-          <th>Grasas</th>
-          <th>Carbohidratos</th>
-          <th>Azucar</th>
-          <th>Proteina</th>
-
-          <th>Colesterol</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
-        <tr>
-          <td><img [src]="product.imagen" alt="" style="width: 100px;"></td>
-          <td>{{product.nombre}}</td>
-          <td>{{product.energia}}</td>
-          <td>{{product.grasas}}</td>
-          <td>{{product.carbohidratos}}</td>
-          <td>{{product.azucar}}</td>
-          <td>{{product.proteina}}</td>
-
-          <td>{{product.colesterol}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-     <div class="card">
-    <p-chart type="bar" [data]="basicData2" [options]="basicOptions"></p-chart>
-  </div>
-  </div>
- 
-
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.energia < selectedGraphicFood2.energia">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.energia > selectedGraphicFood2.energia">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.energia == selectedGraphicFood2.energia">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+      </tr>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Grasas</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.grasas < selectedGraphicFood2.grasas">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.grasas > selectedGraphicFood2.grasas">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.grasas == selectedGraphicFood2.grasas">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.energia > selectedGraphicFood2.energia">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.energia < selectedGraphicFood2.energia">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.grasas == selectedGraphicFood2.grasas">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+      </tr>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Carbohidratos</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.carbohidratos < selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.carbohidratos > selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.carbohidratos == selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.carbohidratos > selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.carbohidratos < selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.carbohidratos == selectedGraphicFood2.carbohidratos">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+       
+      </tr>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Azucar</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.azucar < selectedGraphicFood2.azucar">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.azucar > selectedGraphicFood2.azucar">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.azucar == selectedGraphicFood2.azucar">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.azucar > selectedGraphicFood2.azucar">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.azucar < selectedGraphicFood2.azucar">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.azucar == selectedGraphicFood2.azucar">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+       
+      </tr>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Proteinas</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.proteina > selectedGraphicFood2.proteina">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.proteina < selectedGraphicFood2.proteina">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.proteina == selectedGraphicFood2.proteina">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.proteina < selectedGraphicFood2.proteina">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.proteina > selectedGraphicFood2.proteina">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.proteina == selectedGraphicFood2.proteina">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+      
+      </tr>
+      <tr style="background-color: antiquewhite; color: black;">
+        <td>Colesterol</td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.colesterol < selectedGraphicFood2.colesterol">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.colesterol > selectedGraphicFood2.colesterol">
+            <i class="pi pi-times" style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.colesterol == selectedGraphicFood2.colesterol">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="selectedGraphicFood1.colesterol > selectedGraphicFood2.colesterol">
+            <i class="pi pi-check" style="color: rgb(6, 82, 44); font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.colesterol < selectedGraphicFood2.colesterol">
+            <i class="pi pi-times"style="color: red; font-weight: bold;"></i>
+          </div>
+          <div *ngIf="selectedGraphicFood1.colesterol == selectedGraphicFood2.colesterol">
+            <i class="pi pi-pause"  style="color: black; font-weight: bold;"></i>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
+<div class="col-4"></div>
+</div>
+
+
+</body>
